@@ -1,0 +1,27 @@
+https://www.interviewbit.com/problems/find-duplicate-in-array/
+class Solution:
+    # @param A : tuple of integers
+    # @return an integer
+    def repeatedNumber(self, A):
+        
+        head=0
+        
+        fp=head
+        sp=head
+        
+        while True:
+            
+            fp=A[A[fp]]
+            
+            sp=A[sp]
+            
+            if fp==sp:
+                break
+        sp=0
+        while fp!=sp:
+            prev=sp
+            fp=A[fp]
+            sp=A[sp]
+        
+        return fp
+            
