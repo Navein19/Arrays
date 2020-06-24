@@ -1,0 +1,46 @@
+https://leetcode.com/problems/3sum/submissions/
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        
+        nums.sort()
+        
+        visited={}
+        solution=[]
+        
+        for i in nums:
+            visited[i]=False
+            
+        
+        
+        for i in range(len(nums)-2):
+            
+            if visited[nums[i]]==False :
+                
+                target=-nums[i]
+                
+                l_ptr=i+1
+                
+                r_ptr=len(nums)-1
+                
+                
+                while(l_ptr<r_ptr):
+                    
+                    sumi=nums[l_ptr]+nums[r_ptr]
+                    
+                    if sumi==target :
+                        solution.append([nums[i],nums[l_ptr],nums[r_ptr]])
+                        r_ptr=r_ptr-1
+                        l_ptr=l_ptr+1
+                        while l_ptr < r_ptr and nums[l_ptr] == nums[l_ptr - 1]: l_ptr += 1
+                        while l_ptr < r_ptr and nums[r_ptr] == nums[r_ptr + 1]: r_ptr -= 1
+                        
+                    if sumi>target:
+                        r_ptr=r_ptr-1
+                    
+                    if sumi<target:
+                        l_ptr=l_ptr+1
+            
+            visited[nums[i]]=True
+        
+        return solution
+        
