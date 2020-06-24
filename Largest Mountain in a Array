@@ -1,0 +1,46 @@
+https://leetcode.com/problems/longest-mountain-in-array/
+
+class Solution:
+    def longestMountain(self, A: List[int]) -> int:
+        
+        if len(A)<3:
+            return 0
+        
+        l=0
+        r=1
+        
+        max_len=0
+        
+        while r<len(A):
+            
+            if A[l]<A[r]:
+                
+                left_steep=0
+                right_steep=0
+                
+                while r<len(A) and A[r]>A[r-1]:
+                    r+=1
+                    left_steep+=1
+                
+                if r==len(A):
+                    return max_len
+                
+                else:
+                    
+                    while r<len(A) and A[r]<A[r-1]:
+                        r+=1
+                        right_steep+=1
+                
+                if r-l>=2 and left_steep and right_steep:
+                    max_len=max(max_len,r-l)
+                
+                l=r-1
+            
+            else:
+                l+=1
+                r=l+1
+            
+        
+        return max_len
+            
+        
