@@ -1,0 +1,29 @@
+C:\Users\Navein Kumar\Downloads\Algoexpert\Medium\3.Move element to end.mp4
+
+def move_element_to_end(A,element):
+    
+    l=0
+    r=len(A)-1
+    
+    while l<r:
+        print(A)
+        while r>=0 and A[r]==element:
+            r-=1
+        if r==-1 or l>=r:
+            break
+            
+        while l<len(A) and A[l]!=element:
+            l+=1
+        
+        if l==len(A) or l>=r:
+            break
+        
+        temp=A[l]
+        A[l]=A[r]
+        A[r]=temp
+        
+        r-=1
+        l+=1
+        
+    print(A)
+            
