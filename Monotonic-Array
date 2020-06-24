@@ -1,0 +1,21 @@
+https://leetcode.com/problems/monotonic-array/submissions/
+
+class Solution:
+    def isMonotonic(self, A: List[int]) -> bool:
+        
+        
+        increase_flag=False
+        decrease_flag=False
+        
+        for i in range(len(A)-1):
+            if A[i]>A[i+1]:
+                decrease_flag=True
+            if A[i]<A[i+1]:
+                increase_flag=True
+            
+            
+            if increase_flag and decrease_flag:
+                return False
+        
+        return True
+        
